@@ -1,0 +1,13 @@
+project_id = "elegpayedzswsixrrgmt"
+
+[functions.send-otp]
+verify_jwt = false
+
+[functions.verify-otp]
+verify_jwt = false
+
+[functions.send-event-notification]
+verify_jwt = false
+
+[functions.send-event-reminders]
+verify_jwt = false

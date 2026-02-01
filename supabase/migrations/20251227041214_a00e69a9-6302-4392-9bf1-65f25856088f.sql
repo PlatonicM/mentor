@@ -1,0 +1,5 @@
+-- Allow admins to view all transactions
+CREATE POLICY "Admins can view all transactions"
+ON public.transactions
+FOR SELECT
+USING (has_role(auth.uid(), 'admin'::app_role));

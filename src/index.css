@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================= */
+/* 🔥 SWIGGY ORANGE DESIGN SYSTEM — FINAL            */
+/* Mentor LMS — Dark + Orange (NO WHITE)             */
+/* ================================================= */
+
+@layer base {
+  :root {
+    /* ---------- EXACT SWIGGY ORANGE ---------- */
+    --primary: 24 98% 55%;                 /* #FC8019 */
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 36 95% 55%;                  /* Saffron */
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 18 85% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 75% 45%;
+    --warning: 38 92% 50%;
+    --info: 205 90% 60%;
+
+    /* ---------- BACKGROUND (NO WHITE EVER) ---------- */
+    --background: 20 35% 6%;               /* Deep warm orange-black */
+    --foreground: 30 40% 96%;
+
+    --card: 22 40% 10%;
+    --card-foreground: 30 40% 96%;
+
+    --popover: 22 40% 9%;
+    --popover-foreground: 30 40% 96%;
+
+    --muted: 22 30% 18%;
+    --muted-foreground: 30 20% 72%;
+
+    --border: 22 30% 20%;
+    --input: 22 30% 20%;
+    --ring: 24 98% 55%;
+
+    --radius: 0.75rem;
+
+    /* ---------- SHADOWS (STRONG & WARM) ---------- */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.45);
+    --shadow-md: 0 10px 28px rgba(0,0,0,.55);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,.65);
+
+    /* ---------- GRADIENTS ---------- */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(24 98% 55%) 0%,
+      hsl(36 95% 55%) 100%
+    );
+
+    --gradient-dark: linear-gradient(
+      180deg,
+      hsl(20 35% 8%) 0%,
+      hsl(20 35% 4%) 100%
+    );
+  }
+
+  /* ---------- BASE RESET ---------- */
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: var(--gradient-dark);
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    font-weight: 600;
+  }
+}
+
+/* ================================================= */
+/* 🧱 COMPONENTS — SWIGGY STYLE                      */
+/* ================================================= */
+
+@layer components {
+  /* ---------- CARDS ---------- */
+  .card {
+    @apply rounded-xl;
+    background-color: hsl(var(--card));
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn-primary {
+    @apply text-primary-foreground font-semibold transition;
+    background-image: var(--gradient-primary);
+    box-shadow: 0 12px 36px hsl(24 98% 55% / 0.5);
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.04);
+  }
+
+  .btn-outline {
+    @apply border border-border text-foreground transition;
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    background-color: hsl(var(--muted));
+  }
+
+  /* ---------- GLASS (ORANGE TINT) ---------- */
+  .glass {
+    background: linear-gradient(
+      135deg,
+      rgba(252,128,25,0.18),
+      rgba(252,128,25,0.05)
+    );
+    backdrop-filter: blur(18px);
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* ---------- MOBILE BOTTOM NAV (SWIGGY STYLE) ---------- */
+  .bottom-nav {
+    @apply fixed bottom-0 inset-x-0 z-50 flex justify-around items-center;
+    background-color: hsl(var(--card));
+    border-top: 1px solid hsl(var(--border));
+    height: 64px;
+  }
+
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center text-xs transition;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .bottom-nav-item-active {
+    color: hsl(var(--primary));
+  }
+}
+
+/* ================================================= */
+/* 🧰 UTILITIES                                     */
+/* ================================================= */
+
+@layer utilities {
+  /* Scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.7);
+    border-radius: 999px;
+  }
+
+  /* Motion Tokens (Framer Motion Friendly) */
+  .motion-fast {
+    transition: all 150ms ease-out;
+  }
+
+  .motion-medium {
+    transition: all 300ms ease-out;
+  }
+
+  .motion-slow {
+    transition: all 500ms ease-out;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.45s ease-out both;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.35s ease-out both;
+  }
+}
+
+/* ================================================= */
+/* 🎬 ANIMATIONS                                    */
+/* ================================================= */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
